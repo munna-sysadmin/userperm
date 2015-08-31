@@ -1,0 +1,16 @@
+---
+
+- name: Creating Group
+  group: name={{ ansi_group }} state=present
+
+- local_action: "command openssl passwd -1 '{{pass}}'"
+  register: pass_hash
+
+- name: create tomcat user
+  user: name={{ user }} state=present password="{{pass_hash.stdout}}" group={{ ansi_group }} shell=/bin/bash
+  
+- name: Creating Shared Folder
+  file: path={{ ansi_dir }} state=directory owner=root group=root mode=0777
+
+- name: Assigning User permission on Directory
+  file: path={{ ansi_dir }} owner={{ user }}  group={{ ansi_group }} mode={{ ansi_perm }}

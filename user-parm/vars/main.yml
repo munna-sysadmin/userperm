@@ -1,0 +1,7 @@
+---
+
+ansi_dir: /usr/src/dir1
+ansi_group: grp1
+#ansi_user: abc
+ansi_perm: 644
+#ansi_pass: $1$QJ7eqMnH$xs4WSPnZGJQS2bX.bANmg.
